@@ -25,11 +25,21 @@ function createGrid(rows, squares) {
     }
 }
 
-// function deleteGrid() {
-//     for(let i = 0; i < numberOfRows; i++) {
-//         rowDivs[i].remove();
-//     }
-// }
+function deleteGrid() {
+    for(let i = 0; i < numberOfRows; i++) {
+        rowDivs[i].remove();
+    }
+}
 
 createGrid(numberOfRows, numberOfSquares);
 
+const choice = document.getElementById('choice');
+choice.addEventListener('click', function() {
+    deleteGrid();
+    const userInput = prompt("Please enter the number of squares (max. 100):");
+    numberOfRows = (parseInt(userInput) > 100) ? 16 : parseInt(userInput);
+    numberOfSquares = numberOfRows;
+    console.log(numberOfRows);
+    console.log(numberOfSquares);
+    createGrid(numberOfRows, numberOfSquares);
+})
