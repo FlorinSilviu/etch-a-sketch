@@ -1,0 +1,18 @@
+body {
+    background-color: aqua;
+    margin: 0;
+}
+
+#container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 130px auto;
+    width: 500px;
+    height: 500px;
+}
+
+.rowdiv, .rowsquare {
+    display: flex;
+    flex: 1;
+}
