@@ -1,15 +1,37 @@
 body {
-    background-color: aqua;
+    background-color: #252F2C;
     margin: 0;
+}
+
+.content {
+    margin: 80px;
+    display: flex;
+    flex-direction: column;
+}
+
+#size {
+    align-self: center;
+    border-radius: 4px;
+    padding: 10px;
+    flex: 1;
+    margin-bottom: 50px;
+    border: none;
+    background-color: #1C8162;
+    color: white;
+}
+
+#size:hover {
+    background-color: #166B50;
 }
 
 #container {
     background-color: white;
     display: flex;
     flex-direction: column;
-    margin: 130px auto;
+    margin: auto;
     width: 500px;
     height: 500px;
+    box-shadow: 0 0 20px #B6D0C8;
 }
 
 .rowdiv, .rowsquare {

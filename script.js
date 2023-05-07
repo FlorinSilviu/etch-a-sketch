@@ -33,7 +33,7 @@ function deleteGrid() {
 
 createGrid(numberOfRows, numberOfSquares);
 
-const choice = document.getElementById('choice');
+const choice = document.getElementById('size');
 choice.addEventListener('click', function() {
     deleteGrid();
     const userInput = prompt("Please enter the number of squares (max. 100):");
