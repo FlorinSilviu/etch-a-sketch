@@ -3,7 +3,7 @@ const container = document.getElementById('container');
 let rowDivs = [];
 let rowSquares = [];
 
-let color = 'black';
+let drawColor = 'black';
 
 let numberOfRows = 16; //initial number of rows
 let numberOfSquares = 16; //initial number of squares per row
@@ -48,8 +48,8 @@ choice.addEventListener('click', function() {
 const rainbow = document.getElementById('rainbow');
 
 function randomizeColor() {
-    color = '#' + Math.floor(Math.random()*16777215).toString(16);
-    return color;
+    drawColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+    return drawColor;
 }
 
 function enableRainbow() {
@@ -100,4 +100,27 @@ eraser.addEventListener('click', function () {
     }
 })
 
-const shadow = document.getElementById('shadow');
+// const shadow = document.getElementById('shadow');
+
+// let gradualArr = [];
+
+// for(let i = 0; i < 10; i++) {
+//     if(i <= 8) {
+//         gradualArr[i] = `RGBA(0,0,0,0.${i+1})`;
+//     }
+//     else {
+//         gradualArr[i] = `RGBA(0,0,0)`
+//     }
+// }
+
+// shadow.addEventListener('click', function () {
+//     for(let i = 0; i < numberOfRows; i++) {
+//         for(let j = 0; j < numberOfSquares; j++) {
+//             rowDivs[i].children[j].addEventListener('mouseenter', function(e) {
+//                e.target.style.backgroundColor = gradualArr[0];
+//         })
+//     }
+//     }
+// })
+
+// `RGBA(0,0,0,${0.1})`
