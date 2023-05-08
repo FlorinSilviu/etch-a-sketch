@@ -1,9 +1,12 @@
 const container = document.getElementById('container');
+
 let rowDivs = [];
 let rowSquares = [];
 
-let numberOfRows = 16;
-let numberOfSquares = 16;
+let color = 'black';
+
+let numberOfRows = 16; //initial number of rows
+let numberOfSquares = 16; //initial number of squares per row
 
 function createGrid(rows, squares) {
     for(let i = 0; i < numberOfRows; i++) {
@@ -18,7 +21,6 @@ function createGrid(rows, squares) {
             rowSquares[j].classList.add('rowsquare');
             rowDivs[i].appendChild(rowSquares[j]);
             rowDivs[i].children[j].addEventListener('mouseenter', function(e) {
-                console.log(e);
                 e.target.style.backgroundColor = 'black';
         })
     }
@@ -39,7 +41,27 @@ choice.addEventListener('click', function() {
     const userInput = prompt("Please enter the number of squares (max. 100):");
     numberOfRows = (parseInt(userInput) > 100) ? 16 : parseInt(userInput);
     numberOfSquares = numberOfRows;
-    console.log(numberOfRows);
-    console.log(numberOfSquares);
     createGrid(numberOfRows, numberOfSquares);
+    enableRainbow();
 })
+
+const rainbow = document.getElementById('rainbow');
+
+function randomizeColor() {
+    color = '#' + Math.floor(Math.random()*16777215).toString(16);
+    return color;
+}
+
+function enableRainbow() {
+    for(let i = 0; i < numberOfRows; i++) {
+        for(let j = 0; j < numberOfSquares; j++) {
+            rainbow.addEventListener('click', function() {
+                rowDivs[i].children[j].addEventListener('mouseenter', function(e) {
+                    e.target.style.backgroundColor = randomizeColor();
+            })
+            })
+        }
+    }
+}
+
+enableRainbow();

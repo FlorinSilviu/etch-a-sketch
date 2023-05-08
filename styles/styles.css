@@ -3,8 +3,16 @@ body {
     margin: 0;
 }
 
+.title {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 45px;
+    color: white;
+}
+
 .content {
-    margin: 80px;
+    gap: 20px;
+    margin: 40px;
     display: flex;
     flex-direction: column;
 }
@@ -14,13 +22,27 @@ body {
     border-radius: 4px;
     padding: 10px;
     flex: 1;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     border: none;
     background-color: #1C8162;
     color: white;
 }
 
-#size:hover {
+.bottom-buttons {
+    align-self: center;
+    display: flex;
+    gap: 20px;
+}
+
+#rainbow, #shadow {
+    border-radius: 4px;
+    padding: 10px;
+    border: none;
+    background-color: #1C8162;
+    color: white;
+}
+
+#size:hover, #rainbow:hover, #shadow:hover {
     background-color: #166B50;
 }
 
