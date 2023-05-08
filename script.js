@@ -65,3 +65,39 @@ function enableRainbow() {
 }
 
 enableRainbow();
+
+const clear = document.getElementById('clear');
+
+clear.addEventListener('click', function() {
+    for(let i = 0; i < numberOfRows; i++) {
+        for(let j = 0; j < numberOfSquares; j++) {
+            rowDivs[i].children[j].style.backgroundColor = 'white';
+        }
+    }
+})
+
+const normal = document.getElementById('normal')
+
+normal.addEventListener('click', function () {
+    for(let i = 0; i < numberOfRows; i++) {
+        for(let j = 0; j < numberOfSquares; j++) {
+            rowDivs[i].children[j].addEventListener('mouseenter', function(e) {
+                e.target.style.backgroundColor = 'black';
+        })
+    }
+    }
+})
+
+const eraser = document.getElementById('eraser')
+
+eraser.addEventListener('click', function () {
+    for(let i = 0; i < numberOfRows; i++) {
+        for(let j = 0; j < numberOfSquares; j++) {
+            rowDivs[i].children[j].addEventListener('mouseenter', function(e) {
+                e.target.style.backgroundColor = 'white';
+        })
+    }
+    }
+})
+
+const shadow = document.getElementById('shadow');

@@ -34,7 +34,7 @@ body {
     gap: 20px;
 }
 
-#rainbow, #shadow {
+#rainbow, #shadow, #clear, #normal, #eraser {
     border-radius: 4px;
     padding: 10px;
     border: none;
@@ -42,7 +42,7 @@ body {
     color: white;
 }
 
-#size:hover, #rainbow:hover, #shadow:hover {
+#size:hover, #rainbow:hover, #shadow:hover, #clear:hover, #normal:hover, #eraser:hover {
     background-color: #166B50;
 }
 
