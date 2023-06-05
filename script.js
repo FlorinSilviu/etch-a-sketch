@@ -3,8 +3,6 @@ const container = document.getElementById('container');
 let rowDivs = [];
 let rowSquares = [];
 
-let drawColor = 'black';
-
 let numberOfRows = 16; //initial number of rows
 let numberOfSquares = 16; //initial number of squares per row
 
@@ -20,9 +18,7 @@ function createGrid(rows, squares) {
             rowSquares[j] = document.createElement('div');
             rowSquares[j].classList.add('rowsquare');
             rowDivs[i].appendChild(rowSquares[j]);
-            rowDivs[i].children[j].addEventListener('mouseenter', function(e) {
-                e.target.style.backgroundColor = 'black';
-        })
+            rowDivs[i].children[j].style.backgroundColor = 'white';
     }
     }
 }
@@ -42,7 +38,6 @@ choice.addEventListener('click', function() {
     numberOfRows = (parseInt(userInput) > 100) ? 16 : parseInt(userInput);
     numberOfSquares = numberOfRows;
     createGrid(numberOfRows, numberOfSquares);
-    enableRainbow();
 })
 
 const rainbow = document.getElementById('rainbow');
@@ -52,19 +47,15 @@ function randomizeColor() {
     return drawColor;
 }
 
-function enableRainbow() {
+rainbow.addEventListener('click', function() {
     for(let i = 0; i < numberOfRows; i++) {
         for(let j = 0; j < numberOfSquares; j++) {
-            rainbow.addEventListener('click', function() {
-                rowDivs[i].children[j].addEventListener('mouseenter', function(e) {
-                    e.target.style.backgroundColor = randomizeColor();
-            })
+            rowDivs[i].children[j].addEventListener('mouseenter', function(e) {
+                e.target.style.backgroundColor = randomizeColor();
             })
         }
     }
-}
-
-enableRainbow();
+})
 
 const clear = document.getElementById('clear');
 
@@ -88,6 +79,7 @@ normal.addEventListener('click', function () {
     }
 })
 
+
 const eraser = document.getElementById('eraser')
 
 eraser.addEventListener('click', function () {
@@ -100,27 +92,60 @@ eraser.addEventListener('click', function () {
     }
 })
 
-// const shadow = document.getElementById('shadow');
+//
 
-// let gradualArr = [];
+let gradualArr = [];
 
-// for(let i = 0; i < 10; i++) {
-//     if(i <= 8) {
-//         gradualArr[i] = `RGBA(0,0,0,0.${i+1})`;
-//     }
-//     else {
-//         gradualArr[i] = `RGBA(0,0,0)`
-//     }
-// }
+for(let i = 0; i < 10; i++) {
+    if(i <= 8) {
+        gradualArr[i] = `rgba(0, 0, 0, 0.${i+1})`;
+    }
+    else {
+        gradualArr[i] = `rgb(0, 0, 0)`
+    }
+}
 
-// shadow.addEventListener('click', function () {
-//     for(let i = 0; i < numberOfRows; i++) {
-//         for(let j = 0; j < numberOfSquares; j++) {
-//             rowDivs[i].children[j].addEventListener('mouseenter', function(e) {
-//                e.target.style.backgroundColor = gradualArr[0];
-//         })
-//     }
-//     }
-// })
+const shadow = document.getElementById('shadow');
 
-// `RGBA(0,0,0,${0.1})`
+function graduallyColor(drawColor) {
+    switch(drawColor) {
+        case gradualArr[0]: drawColor = gradualArr[1];
+                            break;
+        case gradualArr[1]: drawColor = gradualArr[2];
+                            break;
+        case gradualArr[2]: drawColor = gradualArr[3];
+                            break;
+        case gradualArr[3]: drawColor = gradualArr[4];
+                            break;  
+        case gradualArr[4]: drawColor = gradualArr[5];
+                            break;
+        case gradualArr[5]: drawColor = gradualArr[6];
+                            break;
+        case gradualArr[6]: drawColor = gradualArr[7];
+                            break;
+        case gradualArr[7]: drawColor = gradualArr[8];
+                            break;   
+        case gradualArr[8]: drawColor = gradualArr[9];
+                            break;
+        case gradualArr[9]: drawColor = gradualArr[9];
+                            break;
+        default: drawColor = gradualArr[0];
+                            break;                  
+    }
+    return drawColor;
+}
+
+shadow.addEventListener('click', function() {
+    deleteGrid()
+    createGrid(numberOfRows, numberOfSquares);
+    for(let i = 0; i < numberOfRows; i++) {
+        for(let j = 0; j < numberOfSquares; j++) {
+            rowDivs[i].children[j].addEventListener('mouseenter', function(e) {
+                console.log(e.target.style.backgroundColor);
+                e.target.style.backgroundColor = graduallyColor(e.target.style.backgroundColor);
+            })
+        }
+    }
+})
+
+
